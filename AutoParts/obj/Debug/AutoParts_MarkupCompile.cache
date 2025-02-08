@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Student.DESKTOP-QKGSV6O\Desktop\AutoParts\AutoParts\obj\Debug\
+C:\Users\Student.DESKTOP-QKGSV6O\source\repos\AutoParts\AutoParts\obj\Debug\
 AutoParts
 none
 false
 DEBUG;TRACE
-C:\Users\Student.DESKTOP-QKGSV6O\Desktop\AutoParts\AutoParts\App.xaml
+C:\Users\Student.DESKTOP-QKGSV6O\source\repos\AutoParts\AutoParts\App.xaml
 14180004128
 4781751667
-30391555137
-181317469931
+31-1690533481
+18761821727
 MainWindow.xaml;Pages\AddAutoPartsPage.xaml;Pages\AddClientsPage.xaml;Pages\AddProviderPage.xaml;Pages\AddSalesPage.xaml;Pages\AddSupplyPage.xaml;Pages\AddTypeAutoPartsPage.xaml;Pages\AutoPartsPage.xaml;Pages\ClientsPage.xaml;Pages\MainPage.xaml;Pages\ProvidersPage.xaml;Pages\SalesPage.xaml;Pages\SupplyPage.xaml;Pages\TypeAutoPartsPage.xaml;
 
-False
+True
 

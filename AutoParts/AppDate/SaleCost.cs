@@ -9,12 +9,13 @@ namespace AutoParts.AppDate
 {
     public partial class Sale
     {
-        /*public decimal SaleCost
+        public decimal SaleCost
         {
-            get 
+            get
             {
                 var c = Convert.ToDecimal(CountAutoPartSale) * Price;
                 return Convert.ToDecimal(c);
-            }*/
+            }
+        }
     }
 }

@@ -30,8 +30,8 @@
                         <TextBlock Text="{Binding DateSale, StringFormat='{}{0:dd.MM.yyyy}'}" FontSize="17" Margin="0,5,0,0"/>
                         <TextBlock Text="Количество:" FontSize="15" Margin="0,5,0,0"/>
                         <TextBlock Text="{Binding CountAutoPartSale}" FontSize="17" Margin="0,5,0,0"/>
-                        <!--TextBlock Text="Итого:" FontSize="15" Margin="0,5,0,0"/>
-                        <TextBlock Text="{Binding SaleCost}" FontSize="15" Margin="0,5,0,0"/-->
+                        <TextBlock Text="Итого:" FontSize="15" Margin="0,5,0,0"/>
+                        <TextBlock Text="{Binding SaleCost}" FontSize="15" Margin="0,5,0,0"/>
                         <Button x:Name="editBtn" Content="Изменить" Click="editBtn_Click" FontSize="15" Background="White" Margin="0,5,0,0"/>
                     </StackPanel>
                 </DataTemplate>
