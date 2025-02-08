@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище AutoPartsDBModelContainer" CdmEntityContainer="AutoPartsDBEntities1">
+    <EntitySetMapping Name="AutoPartsTable">
+      <EntityTypeMapping TypeName="AutoPartsDBModel.AutoPartsTable">
+        <MappingFragment StoreEntitySet="AutoPartsTable">
+          <ScalarProperty Name="IdAutoPart" ColumnName="IdAutoPart" />
+          <ScalarProperty Name="IdTypeAutoPart" ColumnName="IdTypeAutoPart" />
+          <ScalarProperty Name="NameAutoPart" ColumnName="NameAutoPart" />
+          <ScalarProperty Name="CountAutoPart" ColumnName="CountAutoPart" />
+          <ScalarProperty Name="PriceAutoPart" ColumnName="PriceAutoPart" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="AutoPartsDBModel.Clients">
+        <MappingFragment StoreEntitySet="Clients">
+          <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+          <ScalarProperty Name="FIOClient" ColumnName="FIOClient" />
+          <ScalarProperty Name="AddresClient" ColumnName="AddresClient" />
+          <ScalarProperty Name="PhoneClient" ColumnName="PhoneClient" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Providers">
+      <EntityTypeMapping TypeName="AutoPartsDBModel.Providers">
+        <MappingFragment StoreEntitySet="Providers">
+          <ScalarProperty Name="IdProvider" ColumnName="IdProvider" />
+          <ScalarProperty Name="NameProvider" ColumnName="NameProvider" />
+          <ScalarProperty Name="AddresProvider" ColumnName="AddresProvider" />
+          <ScalarProperty Name="PhoneProvider" ColumnName="PhoneProvider" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sale">
+      <EntityTypeMapping TypeName="AutoPartsDBModel.Sale">
+        <MappingFragment StoreEntitySet="Sale">
+          <ScalarProperty Name="IdSale" ColumnName="IdSale" />
+          <ScalarProperty Name="IdAutoPart" ColumnName="IdAutoPart" />
+          <ScalarProperty Name="IdTypeAutoPart" ColumnName="IdTypeAutoPart" />
+          <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+          <ScalarProperty Name="DateSale" ColumnName="DateSale" />
+          <ScalarProperty Name="CountAutoPartSale" ColumnName="CountAutoPartSale" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Supply">
+      <EntityTypeMapping TypeName="AutoPartsDBModel.Supply">
+        <MappingFragment StoreEntitySet="Supply">
+          <ScalarProperty Name="IdSupply" ColumnName="IdSupply" />
+          <ScalarProperty Name="IdProvider" ColumnName="IdProvider" />
+          <ScalarProperty Name="IdAutoPart" ColumnName="IdAutoPart" />
+          <ScalarProperty Name="IdTypeAutoPart" ColumnName="IdTypeAutoPart" />
+          <ScalarProperty Name="DateSupply" ColumnName="DateSupply" />
+          <ScalarProperty Name="CountAutoPartSupply" ColumnName="CountAutoPartSupply" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeAutoParts">
+      <EntityTypeMapping TypeName="AutoPartsDBModel.TypeAutoParts">
+        <MappingFragment StoreEntitySet="TypeAutoParts">
+          <ScalarProperty Name="IdTypeAutoPart" ColumnName="IdTypeAutoPart" />
+          <ScalarProperty Name="NameTypeAutoPart" ColumnName="NameTypeAutoPart" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

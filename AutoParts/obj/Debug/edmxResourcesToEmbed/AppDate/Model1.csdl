@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AutoPartsDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AutoPartsTable">
+    <Key>
+      <PropertyRef Name="IdAutoPart" />
+    </Key>
+    <Property Name="IdAutoPart" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdTypeAutoPart" Type="Int32" />
+    <Property Name="NameAutoPart" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CountAutoPart" Type="Int32" />
+    <Property Name="PriceAutoPart" Type="Decimal" Precision="18" Scale="2" />
+    <NavigationProperty Name="TypeAutoParts" Relationship="Self.FK__AutoParts__IdTyp__5CD6CB2B" FromRole="AutoPartsTable" ToRole="TypeAutoParts" />
+    <NavigationProperty Name="Sale" Relationship="Self.FK__Sale__IdAutoPart__5DCAEF64" FromRole="AutoPartsTable" ToRole="Sale" />
+    <NavigationProperty Name="Supply" Relationship="Self.FK__Supply__IdAutoPa__6E01572D" FromRole="AutoPartsTable" ToRole="Supply" />
+  </EntityType>
+  <EntityType Name="Clients">
+    <Key>
+      <PropertyRef Name="IdClient" />
+    </Key>
+    <Property Name="IdClient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FIOClient" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AddresClient" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneClient" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Sale" Relationship="Self.FK__Sale__IdClient__5070F446" FromRole="Clients" ToRole="Sale" />
+  </EntityType>
+  <EntityType Name="Providers">
+    <Key>
+      <PropertyRef Name="IdProvider" />
+    </Key>
+    <Property Name="IdProvider" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameProvider" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AddresProvider" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneProvider" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Supply" Relationship="Self.FK__Supply__IdProvid__49C3F6B7" FromRole="Providers" ToRole="Supply" />
+  </EntityType>
+  <EntityType Name="Sale">
+    <Key>
+      <PropertyRef Name="IdSale" />
+    </Key>
+    <Property Name="IdSale" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdAutoPart" Type="Int32" />
+    <Property Name="IdTypeAutoPart" Type="Int32" />
+    <Property Name="IdClient" Type="Int32" />
+    <Property Name="DateSale" Type="DateTime" Precision="0" />
+    <Property Name="CountAutoPartSale" Type="Int32" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="AutoPartsTable" Relationship="Self.FK__Sale__IdAutoPart__5DCAEF64" FromRole="Sale" ToRole="AutoPartsTable" />
+    <NavigationProperty Name="Clients" Relationship="Self.FK__Sale__IdClient__5070F446" FromRole="Sale" ToRole="Clients" />
+    <NavigationProperty Name="TypeAutoParts" Relationship="Self.FK__Sale__IdTypeAuto__4F7CD00D" FromRole="Sale" ToRole="TypeAutoParts" />
+  </EntityType>
+  <EntityType Name="Supply">
+    <Key>
+      <PropertyRef Name="IdSupply" />
+    </Key>
+    <Property Name="IdSupply" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdProvider" Type="Int32" />
+    <Property Name="IdAutoPart" Type="Int32" />
+    <Property Name="IdTypeAutoPart" Type="Int32" />
+    <Property Name="DateSupply" Type="DateTime" Precision="0" />
+    <Property Name="CountAutoPartSupply" Type="Int32" />
+    <NavigationProperty Name="AutoPartsTable" Relationship="Self.FK__Supply__IdAutoPa__6E01572D" FromRole="Supply" ToRole="AutoPartsTable" />
+    <NavigationProperty Name="Providers" Relationship="Self.FK__Supply__IdProvid__49C3F6B7" FromRole="Supply" ToRole="Providers" />
+    <NavigationProperty Name="TypeAutoParts" Relationship="Self.FK__Supply__IdTypeAu__4BAC3F29" FromRole="Supply" ToRole="TypeAutoParts" />
+  </EntityType>
+  <EntityType Name="TypeAutoParts">
+    <Key>
+      <PropertyRef Name="IdTypeAutoPart" />
+    </Key>
+    <Property Name="IdTypeAutoPart" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameTypeAutoPart" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AutoPartsTable" Relationship="Self.FK__AutoParts__IdTyp__5CD6CB2B" FromRole="TypeAutoParts" ToRole="AutoPartsTable" />
+    <NavigationProperty Name="Sale" Relationship="Self.FK__Sale__IdTypeAuto__4F7CD00D" FromRole="TypeAutoParts" ToRole="Sale" />
+    <NavigationProperty Name="Supply" Relationship="Self.FK__Supply__IdTypeAu__4BAC3F29" FromRole="TypeAutoParts" ToRole="Supply" />
+  </EntityType>
+  <Association Name="FK__AutoParts__IdTyp__5CD6CB2B">
+    <End Role="TypeAutoParts" Type="Self.TypeAutoParts" Multiplicity="0..1" />
+    <End Role="AutoPartsTable" Type="Self.AutoPartsTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeAutoParts">
+        <PropertyRef Name="IdTypeAutoPart" />
+      </Principal>
+      <Dependent Role="AutoPartsTable">
+        <PropertyRef Name="IdTypeAutoPart" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sale__IdAutoPart__5DCAEF64">
+    <End Role="AutoPartsTable" Type="Self.AutoPartsTable" Multiplicity="0..1" />
+    <End Role="Sale" Type="Self.Sale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AutoPartsTable">
+        <PropertyRef Name="IdAutoPart" />
+      </Principal>
+      <Dependent Role="Sale">
+        <PropertyRef Name="IdAutoPart" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Supply__IdAutoPa__6E01572D">
+    <End Role="AutoPartsTable" Type="Self.AutoPartsTable" Multiplicity="0..1" />
+    <End Role="Supply" Type="Self.Supply" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AutoPartsTable">
+        <PropertyRef Name="IdAutoPart" />
+      </Principal>
+      <Dependent Role="Supply">
+        <PropertyRef Name="IdAutoPart" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sale__IdClient__5070F446">
+    <End Role="Clients" Type="Self.Clients" Multiplicity="0..1" />
+    <End Role="Sale" Type="Self.Sale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clients">
+        <PropertyRef Name="IdClient" />
+      </Principal>
+      <Dependent Role="Sale">
+        <PropertyRef Name="IdClient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Supply__IdProvid__49C3F6B7">
+    <End Role="Providers" Type="Self.Providers" Multiplicity="0..1" />
+    <End Role="Supply" Type="Self.Supply" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Providers">
+        <PropertyRef Name="IdProvider" />
+      </Principal>
+      <Dependent Role="Supply">
+        <PropertyRef Name="IdProvider" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sale__IdTypeAuto__4F7CD00D">
+    <End Role="TypeAutoParts" Type="Self.TypeAutoParts" Multiplicity="0..1" />
+    <End Role="Sale" Type="Self.Sale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeAutoParts">
+        <PropertyRef Name="IdTypeAutoPart" />
+      </Principal>
+      <Dependent Role="Sale">
+        <PropertyRef Name="IdTypeAutoPart" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Supply__IdTypeAu__4BAC3F29">
+    <End Role="TypeAutoParts" Type="Self.TypeAutoParts" Multiplicity="0..1" />
+    <End Role="Supply" Type="Self.Supply" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeAutoParts">
+        <PropertyRef Name="IdTypeAutoPart" />
+      </Principal>
+      <Dependent Role="Supply">
+        <PropertyRef Name="IdTypeAutoPart" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AutoPartsDBEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AutoPartsTable" EntityType="Self.AutoPartsTable" />
+    <EntitySet Name="Clients" EntityType="Self.Clients" />
+    <EntitySet Name="Providers" EntityType="Self.Providers" />
+    <EntitySet Name="Sale" EntityType="Self.Sale" />
+    <EntitySet Name="Supply" EntityType="Self.Supply" />
+    <EntitySet Name="TypeAutoParts" EntityType="Self.TypeAutoParts" />
+    <AssociationSet Name="FK__AutoParts__IdTyp__5CD6CB2B" Association="Self.FK__AutoParts__IdTyp__5CD6CB2B">
+      <End Role="TypeAutoParts" EntitySet="TypeAutoParts" />
+      <End Role="AutoPartsTable" EntitySet="AutoPartsTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sale__IdAutoPart__5DCAEF64" Association="Self.FK__Sale__IdAutoPart__5DCAEF64">
+      <End Role="AutoPartsTable" EntitySet="AutoPartsTable" />
+      <End Role="Sale" EntitySet="Sale" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Supply__IdAutoPa__6E01572D" Association="Self.FK__Supply__IdAutoPa__6E01572D">
+      <End Role="AutoPartsTable" EntitySet="AutoPartsTable" />
+      <End Role="Supply" EntitySet="Supply" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sale__IdClient__5070F446" Association="Self.FK__Sale__IdClient__5070F446">
+      <End Role="Clients" EntitySet="Clients" />
+      <End Role="Sale" EntitySet="Sale" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Supply__IdProvid__49C3F6B7" Association="Self.FK__Supply__IdProvid__49C3F6B7">
+      <End Role="Providers" EntitySet="Providers" />
+      <End Role="Supply" EntitySet="Supply" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sale__IdTypeAuto__4F7CD00D" Association="Self.FK__Sale__IdTypeAuto__4F7CD00D">
+      <End Role="TypeAutoParts" EntitySet="TypeAutoParts" />
+      <End Role="Sale" EntitySet="Sale" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Supply__IdTypeAu__4BAC3F29" Association="Self.FK__Supply__IdTypeAu__4BAC3F29">
+      <End Role="TypeAutoParts" EntitySet="TypeAutoParts" />
+      <End Role="Supply" EntitySet="Supply" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
